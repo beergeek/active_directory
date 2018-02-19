@@ -1,0 +1,10 @@
+# This file can be used to install module depdencies for unit testing
+# See https://github.com/puppetlabs/puppetlabs_spec_helper#using-fixtures for details
+---
+fixtures:
+  forge_modules:
+    stdlib: "puppetlabs/stdlib"
+  repositories:
+    dsc:
+      repo: "https://github.com/puppetlabs/puppetlabs-dsc.git"
+      ref: "1.5.0"
