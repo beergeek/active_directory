@@ -5,11 +5,14 @@
 # @summary A class to manage DNS servers on Windows 2012 R2 and 2016
 #
 # @param dns_server_name DNS Server name.
+# @param eventloglevel Determines which DNS events go to the Event Viewr. '0' None, '1' Errors only, '2' Errors and warnings, '4' All events.
 # @param listening_addresses A comma separated string of addresses
 # @param forwarders A comma separated string of addresses
 
 class active_directory::dns_server (
   String $dns_server_name,
+  Active_directory::Loglevels $eventloglevel = 4,
+  Active_directory::AnswerLimit $addressanswerlimit = 0,
   String $listening_addresses = $facts['networking']['ip'],
   Optional[String] $forwarders = undef,
 ) {
@@ -41,7 +44,7 @@ class active_directory::dns_server (
     dsc_enabledirectorypartitions => true,
     dsc_enablednssec              => true,
     dsc_enableednsprobes          => true,
-    dsc_eventloglevel             => '4',
+    dsc_eventloglevel             => $eventloglevel,
     dsc_forwarddelegations        => false,
     dsc_forwarders                => $forwarders,
     dsc_forwardingtimeout         => '5',

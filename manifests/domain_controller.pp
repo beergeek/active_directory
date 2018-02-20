@@ -33,6 +33,7 @@ class active_directory::domain_controller (
   String $safe_mode_passwd,
   String $domain_name,
   Optional[String] $parent_domain_name        = undef,
+  Optional[String] $parent_dns_addr           = undef,
   String $ad_db_path                          = 'C:\Windows\NTDS',
   String $sysvol_path                         = 'C:\Windows\SYSVOL',
   String $ad_log_path                         = 'C:\Windows\NTDS',
@@ -59,6 +60,18 @@ class active_directory::domain_controller (
   }
 
   if $parent_domain_name {
+
+    dsc_windowsfeature { 'dns':
+      dsc_ensure => present,
+      dsc_name   => 'dns',
+    }
+
+    dsc_xdnsserveraddress { 'dnsserveraddress':
+      dsc_address        => "'127.0.0.1','${parent_dns_addr}'",
+      dsc_interfacealias => 'ethernet',
+      dsc_addressfamily  => 'ipv4',
+      require            => Dsc_windowsfeature['dns'],
+    }
 
     dsc_xwaitforaddomain { $parent_domain_name:
       dsc_domainname           => $parent_domain_name,
