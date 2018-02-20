@@ -65,7 +65,7 @@ class active_directory::domain_controller (
       dsc_domainusercredential => $domain_credentials,
       dsc_retryintervalsec     => $ad_creation_retry_interval,
       dsc_retrycount           => $ad_creation_retry_attempts,
-      before                   => Dsc_zaddomain[$domain_name],
+      before                   => Dsc_xaddomain[$domain_name],
     }
   }
 
