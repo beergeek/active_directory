@@ -27,7 +27,7 @@
 #   safe_mode_passwd         => 'safe_P@ssw0rd',
 # }
 
-class active_directory::domain_controller (
+class active_directory::domain::domain_controller (
   String $domain_credential_user,
   String $domain_credential_passwd,
   String $safe_mode_passwd,
@@ -46,8 +46,7 @@ class active_directory::domain_controller (
     fail("This class is for Windows 2012 R2 and 2016, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
   }
 
-  #require active_directory::dns_server
-  require active_directory::rsat
+  require active_directory::tools::rsat
 
   $domain_credentials = {
     'user'     => $domain_credential_user,
@@ -61,13 +60,19 @@ class active_directory::domain_controller (
 
   if $parent_domain_name {
 
+    if $facts['domain'] == $domain_name {
+      $dns_array = ['127.0.0.1',$parent_dns_addr]
+    } else {
+      $dns_array = $parent_dns_addr
+    }
+
     dsc_windowsfeature { 'dns':
       dsc_ensure => present,
       dsc_name   => 'dns',
     }
 
     dsc_xdnsserveraddress { 'dnsserveraddress':
-      dsc_address        => "'127.0.0.1','${parent_dns_addr}'",
+      dsc_address        => $dns_array,
       dsc_interfacealias => 'ethernet',
       dsc_addressfamily  => 'ipv4',
       require            => Dsc_windowsfeature['dns'],

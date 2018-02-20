@@ -8,7 +8,7 @@
 # include active_directory::rsat
 #
 
-class active_directory::rsat {
+class active_directory::tools::rsat {
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016/) {
     fail("This class is for Windows 2012 R2 and 2016, not ${facts['os']['family']} and ${facts['os']['release']['major']}")

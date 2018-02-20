@@ -1,1 +1,1 @@
-Type Active_directory::Loglevels = Regex[/[0-2]|4/]
+type Active_directory::Loglevels = Pattern[/^[0-2]|4$/]

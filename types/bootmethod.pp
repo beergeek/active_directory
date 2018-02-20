@@ -1,1 +1,1 @@
-Type Active_directory::bootmethod = Regex[/[0-3]/]
+type Active_directory::Bootmethod = Pattern[/^[0-3]$/]
