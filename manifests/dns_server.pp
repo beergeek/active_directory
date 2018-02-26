@@ -77,6 +77,8 @@ class active_directory::dns_server (
     fail("This class is for Windows 2012 R2 and 2016, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
   }
 
+  require active_directory::rsat_dns
+
   dsc_xdnsserversetting { "${dns_server_name}_dns_server":
     dsc_name                      => "${dns_server_name}_dns_server",
     dsc_addressanswerlimit        => $addressanswerlimit,

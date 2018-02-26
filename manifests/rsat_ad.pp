@@ -1,11 +1,11 @@
-# active_directory::rsat
+# active_directory::rsat_ad
 #
-# A class to manage the Remote Server Administration Tools
+# A class to manage the Remote Server Administration Tools for Active Directory
 #
 # @summary A class to manage the Remote Server Administration Tools
 #
 # @example
-# include active_directory::rsat
+# include active_directory::rsat_ad
 #
 
 class active_directory::rsat_ad {
