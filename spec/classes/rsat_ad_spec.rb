@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'active_directory::rsat' do
+describe 'active_directory::rsat_ad' do
   context 'with defaults and required for all parameters' do
     let :facts do
       {
@@ -9,6 +9,6 @@ describe 'active_directory::rsat' do
 
     it { is_expected.to compile }
 
-    it { is_expected.to contain_class('active_directory::rsat') }
+    it { is_expected.to contain_class('active_directory::rsat_ad') }
   end
 end
