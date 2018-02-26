@@ -1,6 +1,5 @@
 
-class active_directory::dns_ad_forewardzone (
-  String $zone_name,
+define active_directory::dns_ad_forewardzone (
   String $domain_credential_user,
   String $domain_credential_passwd,
   Active_directory::Replicationscope $replicationscope  = 'Forest',
@@ -17,7 +16,7 @@ class active_directory::dns_ad_forewardzone (
     'password' => $domain_credential_passwd,
   }
 
-  dsc_xdnsserveradzone { $zone_name:
+  dsc_xdnsserveradzone { $title:
     dsc_ensure                 => present,
     dsc_dynamicupdate          => $dynamicupdate,
     dsc_psdscrunascredential   => $domain_credentials,
