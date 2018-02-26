@@ -27,7 +27,7 @@
 #   safe_mode_passwd         => 'safe_P@ssw0rd',
 # }
 
-class active_directory::domain::domain_controller (
+class active_directory::domain_controller (
   String $domain_credential_user,
   String $domain_credential_passwd,
   String $safe_mode_passwd,
@@ -46,7 +46,7 @@ class active_directory::domain::domain_controller (
     fail("This class is for Windows 2012 R2 and 2016, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
   }
 
-  require active_directory::tools::rsat
+  require active_directory::rsat_ad
 
   $domain_credentials = {
     'user'     => $domain_credential_user,

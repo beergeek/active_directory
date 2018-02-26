@@ -35,7 +35,7 @@
 # @param writeauthorityns Specifies whether the DNS Server writes NS and SOA records to the authority section on successful response.
 # @param xfrconnecttimeout Time, in seconds, the DNS Server waits for a successful TCP connection to a remote server when attempting a zone transfer.
 
-class active_directory::dns::dns_server (
+class active_directory::dns_server (
   String $dns_server_name,
   Active_directory::Bootmethod $bootmethod                  = '3',
   Active_directory::Loglevels $eventloglevel                = '4',
