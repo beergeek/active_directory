@@ -18,6 +18,7 @@ define active_directory::dns_ad_forewardzone (
 
   dsc_xdnsserveradzone { $title:
     dsc_ensure                 => present,
+    dsc_name                   => $title,
     dsc_dynamicupdate          => $dynamicupdate,
     dsc_psdscrunascredential   => $domain_credentials,
     dsc_replicationscope       => $replicationscope,
