@@ -8,15 +8,16 @@
 # @param domain_credential_passwd The password for the user that has/will have domain admininstrator rights.
 # @param safe_mode_passwd The password for safe mode. The user for this is set to 'Admininstrator'.
 # @param domain_name The name of he domain to be managed.
-# @param parent_domain_name The name of the parent domain this domain will belong to. Not required for a new Forest.
-# @param ad_db_path The path where the Active Directory Database will be created/managed.
-# @param sysvol_path The system volumne path for Active Directory.
-# @aram ad_log_path The log path for Active Directory logs.
 # @param ad_creation_retry_attempts The number of times a non-Forest domain controller will attempt to contact the Forest controller to
-# attempt domain creation.
 # @param ad_creation_retry_interval The interval between attempts that the non-Forest domain controller will attempt to contact the Forest
-# controller.
+# @param ad_db_path The path where the Active Directory Database will be created/managed.
+# @param ad_log_path The log path for Active Directory logs.
 # @param ad_users A hash of Active Directory users to create. Must bw of the type `dsc_xaduser`.
+# @param parent_dns_addr IP address of parent DNS server.
+# @param parent_domain_name The name of the parent domain this domain will belong to. Not required for a new Forest.
+# @param sysvol_path The system volumne path for Active Directory.
+# attempt domain creation.
+# controller.
 #
 # @example Create a new Forest domain controller.
 #
@@ -26,7 +27,7 @@
 #   domain_credential_passwd => 'THis_should_be_nbetter',
 #   safe_mode_passwd         => 'safe_P@ssw0rd',
 # }
-
+#
 class active_directory::domain_controller (
   String $domain_credential_user,
   String $domain_credential_passwd,

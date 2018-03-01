@@ -7,7 +7,7 @@
 # @example
 # include active_directory::rsat_dns
 #
-
+#
 class active_directory::rsat_dns {
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016/) {
