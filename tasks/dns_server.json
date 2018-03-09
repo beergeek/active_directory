@@ -1,0 +1,7 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A task to retrieve information about configured Microsoft DNS Servers",
+  "parameters": {
+  }
+}

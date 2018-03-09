@@ -27,7 +27,7 @@ None. Requires only the DSC module.
 
 Manage Domain Controllers and DNS Servers.
 
-#### NOTE: due to bug with DSC xdnsserver module the `active_directory::dns_ad_zone` defined type does not function https://github.com/PowerShell/xDnsServer/issues/53
+<span style="color:red;font-weight:bold">WARNING: due to bug with DSC xdnsserver module the `active_directory::dns_ad_zone` defined type does not function https://github.com/PowerShell/xDnsServer/issues/53</span>
 
 ## Usage
 
@@ -516,6 +516,8 @@ include active_directory::rsat_dns
 
 active_directory::dns_ad_zone
 
+<span style="color:red;font-weight:bold">WARNING: due to bug with DSC xdnsserver module the `active_directory::dns_ad_zone` defined type does not function https://github.com/PowerShell/xDnsServer/issues/53</span>
+
 #### Examples
 #####
 ```puppet
@@ -571,12 +573,9 @@ Default value: `undef`
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc. If there are Known Issues, you might want to include them under their own heading here.
+Tested on Windows 2012R2.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
+Pull Requests welcome.
 
-## Release Notes/Contributors/Etc. **Optional**
-
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You can also add any additional sections you feel are necessary or important to include here. Please use the `## ` header.
