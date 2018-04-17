@@ -8,4 +8,6 @@ begin
   raise 'Output not recognised', stderr if status != 0
   puts stdout.strip
   exit 0
+rescue
+  puts 'Output not recognised'
 end
