@@ -1,0 +1,19 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A short description of this task",
+  "parameters": {
+    "service": {
+      "description": "The service to create the SPN for",
+      "type": "String[1]"
+    },
+    "fqdn": {
+      "description": "The full qualified domain name of the host running the service",
+      "type": "String[1]"
+    },
+    "user": {
+      "description": "The AD user that will be associated with the service",
+      "type": "String[1]"
+    }
+  }
+}
