@@ -1,0 +1,15 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "A task to change the hostname on Windows nodes",
+  "parameters": {
+    "new_hostname": {
+      "description": "New hostname to use for the node",
+      "type": "String[1]"
+    },
+    "new_domain_name": {
+      "desccription": "New domain name to use for the node",
+      "type": "String[1]"
+    }
+  }
+}

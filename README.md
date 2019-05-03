@@ -27,7 +27,7 @@ None. Requires only the DSC module.
 
 Manage Domain Controllers and DNS Servers.
 
-<span style="color:red;font-weight:bold">WARNING: due to bug with DSC xdnsserver module the `active_directory::dns_ad_zone` defined type does not function https://github.com/PowerShell/xDnsServer/issues/53</span>
+Tasks for doing the same, plus changing hostnames, creating SPNs, features and checking domains.
 
 ## Usage
 

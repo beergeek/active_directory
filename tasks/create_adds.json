@@ -1,0 +1,19 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Create an Active Directory Domain Controller and add new Forest",
+  "parameters": {
+    "safe_password": {
+      "description": "Safe Mode Admin Password",
+      "type": "String[1]"
+    },
+    "domain_name": {
+      "description": "Name of the domain, lowercase",
+      "type": "String[1]"
+    },
+    "netbios_domain_name": {
+      "description": "NETBIOS domain name, uppercase",
+      "type": "String[1]"
+    }
+  }
+}

@@ -3,5 +3,9 @@
   "supports_noop": false,
   "description": "A task to retrieve informaiton about configured Microsoft Domain Controllers",
   "parameters": {
+    "domain_name": {
+      "description": "Name of the domain, lowercase",
+      "type": "String[1]"
+    }
   }
 }
