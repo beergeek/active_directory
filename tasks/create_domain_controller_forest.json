@@ -11,13 +11,17 @@
       "description": "Domain name to use for the new forest. Will be made lowercase",
       "type": "String[1]"
     },
+    "netbios_domain_name": {
+      "description": "NETBIOS name to use for the new forest. Will be made uppercase",
+      "type": "String[1]"
+    },
     "allow_reboot": {
       "description": "Boolean to determine if rebooting the node is allowed",
-      "type": "Boolean"
+      "type": "Optional[Boolean]"
     },
     "install_dns": {
       "description": "Boolean to determine if DNS server is installed",
-      "type": "Boolean"
+      "type": "Optional[Boolean]"
     }
   }
 }
