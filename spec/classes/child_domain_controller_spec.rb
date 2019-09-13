@@ -1,5 +1,6 @@
 require 'spec_helper'
-describe 'active_directory::domain_controller' do
+
+describe 'active_directory::child_domain_controller' do
   context 'with defaults and required for all parameters' do
     let :facts do
       {
@@ -10,13 +11,12 @@ describe 'active_directory::domain_controller' do
       {
         domain_credential_user:    'Admininstrator',
         domain_credential_passwd:  RSpec::Puppet::RawString.new("Sensitive('vftybeisudvfkyj rtysaerfvacjtyDMZHfvfgty')"),
-        safe_mode_passwd:          RSpec::Puppet::RawString.new("Sensitive('EvenW0rse%')"),
         domain_name:               'puppet.local',
       }
     end
 
     it { is_expected.to compile }
 
-    it { is_expected.to contain_class('active_directory::domain_controller') }
+    it { is_expected.to contain_class('active_directory::child_domain_controller') }
   end
 end

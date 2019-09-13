@@ -4,7 +4,8 @@
 fixtures:
   forge_modules:
     stdlib: "puppetlabs/stdlib"
-  repositories:
-    dsc:
-      repo: "https://github.com/puppetlabs/puppetlabs-dsc.git"
-      ref: "1.5.0"
+    dsc: "puppetlabs/dsc"
+#  repositories:
+#    dsc:
+#      repo: "https://github.com/puppetlabs/puppetlabs-dsc.git"
+#      ref: "1.9.3"
