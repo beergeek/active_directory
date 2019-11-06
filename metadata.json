@@ -1,6 +1,6 @@
 {
   "name": "beergeek-active_directory",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "beergeek",
   "summary": "A module to manage Active Directory Domain Controllers",
   "license": "Apache-2.0",
