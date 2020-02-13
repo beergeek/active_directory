@@ -8,16 +8,22 @@
 # @param addressanswerlimit Number of addresses the server will return, 0 is unlimited or a  range is 5 to 28.
 # @param allowupdate Specifies whether the DNS Server accepts dynamic update requests.
 # @param autocacheupdate Indicates whether the DNS Server attempts to update its cache entries using data from root servers.
-# @param autoconfigfilezones Indicates which standard primary zones that are authoritative for the name of the DNS Server must be updated when the name server changes.
+# @param autoconfigfilezones Indicates which standard primary zones that are authoritative for the name of the DNS Server must be updated 
+#   when the name server changes.
 # @param bindsecondaries Enables the DNS server to communicate with non-Microsoft DNS servers that use DNS BIND service.
-# @param bootmethod Determines the source of information that the DNS server uses to start, such as settings to configure the DNS Service, a list of authoritative zones, and configuration settings for the zones.
+# @param bootmethod Determines the source of information that the DNS server uses to start, such as settings to configure the DNS Service, 
+#   a list of authoritative zones, and configuration settings for the zones.
 # @param enabledirectorypartitions Specifies whether support for application directory partitions is enabled on the DNS Server.
 # @param enablednssec Specifies whether the DNS Server includes DNSSEC-specific RRs, KEY, SIG, and NXT in a response.
-# @param enableednsprobes Specifies the behavior of the DNS Server. When TRUE, the DNS Server always responds with OPT resource records according to RFC 2671, unless the remote server has indicated it does not support EDNS in a prior exchange. If FALSE, the DNS Server responds to queries with OPTs only if OPTs are sent in the original query.
-# @param eventloglevel Determines which DNS events go to the Event Viewr. '0' None, '1' Errors only, '2' Errors and warnings, '4' All events.
+# @param enableednsprobes Specifies the behavior of the DNS Server. When TRUE, the DNS Server always responds with OPT resource records 
+#   according to RFC 2671, unless the remote server has indicated it does not support EDNS in a prior exchange. If FALSE, the DNS Server 
+#   responds to queries with OPTs only if OPTs are sent in the original query.
+# @param eventloglevel Determines which DNS events go to the Event Viewr. '0' None, '1' Errors only, '2' Errors and warnings, '4' All 
+#   events.
 # @param forwarddelegations Specifies whether queries to delegated sub-zones are forwarded
 # @param forwarders A comma separated string of fowarder addresses.
-# @param forwardingtimeout Time, in seconds, a DNS Server forwarding a query will wait for resolution from the forwarder before attempting to resolve the query itself.
+# @param forwardingtimeout Time, in seconds, a DNS Server forwarding a query will wait for resolution from the forwarder before attempting 
+#   to resolve the query itself.
 # @param listening_addresses A comma separated string of listening addresses.
 # @param localnetpriority Determines the order in which the DNS server returns A records when it has multiple A records for the same name.
 # @param logfilemaxsize Size of the DNS Server debug log, in bytes.
@@ -33,12 +39,15 @@
 # @param roundrobin Indicates whether the DNS Server round robins multiple A records.
 # @param rpcprotocol RPC protocol or protocols over which administrative RPC runs (bitmap value).
 # @param scavenginginterval Interval, in hours, between two consecutive scavenging operations performed by the DNS Server.
-# @param secureresponses Indicates whether the DNS Server exclusively saves records of names in the same subtree as the server that provided them.
+# @param secureresponses Indicates whether the DNS Server exclusively saves records of names in the same subtree as the server that 
+#   provided them.
 # @param sendport Port on which the DNS Server sends UDP queries to other servers.
 # @param strictfileparsing Indicates whether the DNS Server parses zone files strictly.
-# @param updateoptions Restricts the type of records that can be dynamically updated on the server, used in addition to the AllowUpdate settings on Server and Zone objects.
+# @param updateoptions Restricts the type of records that can be dynamically updated on the server, used in addition to the AllowUpdate 
+#   settings on Server and Zone objects.
 # @param writeauthorityns Specifies whether the DNS Server writes NS and SOA records to the authority section on successful response.
-# @param xfrconnecttimeout Time, in seconds, the DNS Server waits for a successful TCP connection to a remote server when attempting a zone transfer.
+# @param xfrconnecttimeout Time, in seconds, the DNS Server waits for a successful TCP connection to a remote server when attempting a 
+#   zone transfer.
 #
 # @example
 #   class { 'active_directory::dns_server':
@@ -46,41 +55,43 @@
 #   }
 #
 class active_directory::dns_server (
-  String $dns_server_name,
-  Active_directory::Bootmethod $bootmethod                  = '3',
-  Active_directory::Loglevels $eventloglevel                = '4',
-  Active_directory::Addressanswerlimit $addressanswerlimit  = '0',
-  String $listening_addresses                               = $facts['networking']['ip'],
-  Active_directory::Zero_one $roundrobin                    = '1',
-  Active_directory::Zero_one $allowupdate                   = '1',
-  Active_directory::Zero_one $enablednssec                  = '1',
-  Active_directory::Zero_one $enableednsprobes              = '1',
-  Active_directory::Zero_one $forwarddelegations            = '0',
-  Boolean $autocacheupdate                                  = false,
-  Integer $autoconfigfilezones                              = 1,
-  Integer $forwardingtimeout                                = 3,
-  Boolean $bindsecondaries                                  = false,
-  Boolean $enabledirectorypartitions                        = true,
-  Boolean $localnetpriority                                 = true,
-  Integer $logfilemaxsize                                   = 500000000,
-  String $logfilepath                                       = '%SystemRoot%\System32\DNS\Dns.log',
-  Optional[Variant[Array[String],String]] $logipfilterlist  = undef,
-  Boolean $loosewildcarding                                 = false,
-  Integer $maxcachettl                                      = 86400,
-  Integer $maxnegativecachettl                              = 900,
-  Integer $namecheckflag                                    = 2,
-  Boolean $norecursion                                      = false,
-  Integer $recursionretry                                   = 3,
-  Integer $recursiontimeout                                 = 8,
-  Integer $rpcprotocol                                      = 5,
-  Integer $scavenginginterval                               = 1,
-  Boolean $secureresponses                                  = false,
-  Integer $sendport                                         = 0,
-  Boolean $strictfileparsing                                = false,
-  Integer $updateoptions                                    = 783,
-  Boolean $writeauthorityns                                 = false,
-  Integer $xfrconnecttimeout                                = 30,
-  Optional[String] $forwarders                              = undef,
+  String                                  $dns_server_name,
+
+  # Uses hiera for defaults
+  Active_directory::Addressanswerlimit    $addressanswerlimit,
+  Active_directory::Bootmethod            $bootmethod,
+  Active_directory::Loglevels             $eventloglevel,
+  Active_directory::Zero_one              $allowupdate,
+  Active_directory::Zero_one              $enablednssec,
+  Active_directory::Zero_one              $enableednsprobes,
+  Active_directory::Zero_one              $forwarddelegations,
+  Active_directory::Zero_one              $roundrobin,
+  Boolean                                 $autocacheupdate,
+  Boolean                                 $bindsecondaries,
+  Boolean                                 $enabledirectorypartitions,
+  Boolean                                 $localnetpriority,
+  Boolean                                 $loosewildcarding,
+  Boolean                                 $norecursion,
+  Boolean                                 $secureresponses,
+  Boolean                                 $strictfileparsing,
+  Boolean                                 $writeauthorityns,
+  Integer                                 $autoconfigfilezones,
+  Integer                                 $forwardingtimeout,
+  Integer                                 $logfilemaxsize,
+  Integer                                 $maxcachettl,
+  Integer                                 $maxnegativecachettl,
+  Integer                                 $namecheckflag,
+  Integer                                 $recursionretry,
+  Integer                                 $recursiontimeout,
+  Integer                                 $rpcprotocol,
+  Integer                                 $scavenginginterval,
+  Integer                                 $sendport,
+  Integer                                 $updateoptions,
+  Integer                                 $xfrconnecttimeout,
+  Optional[String]                        $forwarders,
+  Optional[Variant[Array[String],String]] $logipfilterlist,
+  String                                  $listening_addresses,
+  String                                  $logfilepath,
 ) {
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {

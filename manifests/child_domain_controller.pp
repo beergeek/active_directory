@@ -25,16 +25,18 @@
 #   domain_credential_passwd => 'THis_should_be_nbetter',
 # }
 class active_directory::child_domain_controller (
-  String[1] $domain_name,
-  String[1] $domain_credential_user,
-  Sensitive[String[1]] $domain_credential_passwd,
-  Stdlib::AbsolutePath $ad_db_path                   = 'C:\Windows\NTDS',
-  Stdlib::AbsolutePath $ad_log_path                  = 'C:\Windows\NTDS',
-  Stdlib::AbsolutePath $sysvol_path                  = 'C:\Windows\SYSVOL',
-  String[1] $ad_wait_retry_attempts                  = '5',
-  String[1] $ad_wait_retry_interval                  = '5',
-  Optional[String[1]] $site_name                     = undef,
-  Optional[Stdlib::AbsolutePath] $install_media_path = undef,
+  String[1]                      $domain_name,
+  String[1]                      $domain_credential_user,
+  Sensitive[String[1]]           $domain_credential_passwd,
+
+  # Use hiera for defaults
+  Stdlib::AbsolutePath           $ad_db_path,
+  Stdlib::AbsolutePath           $ad_log_path,
+  Stdlib::AbsolutePath           $sysvol_path,
+  String[1]                      $ad_wait_retry_attempts,
+  String[1]                      $ad_wait_retry_interval,
+  Optional[String[1]]            $site_name,
+  Optional[Stdlib::AbsolutePath] $install_media_path,
 ){
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {

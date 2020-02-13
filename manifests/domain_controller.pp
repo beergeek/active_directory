@@ -30,17 +30,19 @@
 #
 class active_directory::domain_controller (
   Sensitive[String[1]] $domain_credential_passwd,
-  String $domain_credential_user,
-  String $domain_name,
+  String               $domain_credential_user,
+  String               $domain_name,
   Sensitive[String[1]] $safe_mode_passwd,
-  Optional[Hash] $ad_users                    = {},
-  Optional[String] $parent_dns_addr           = undef,
-  Optional[String] $parent_domain_name        = undef,
-  String $ad_creation_retry_attempts          = '5',
-  String $ad_creation_retry_interval          = '5',
-  Stdlib::AbsolutePath $ad_db_path            = 'C:\Windows\NTDS',
-  Stdlib::AbsolutePath $ad_log_path           = 'C:\Windows\NTDS',
-  Stdlib::AbsolutePath $sysvol_path           = 'C:\Windows\SYSVOL',
+
+  # Uses hiera for defaults
+  Optional[Hash]       $ad_users,
+  Optional[String]     $parent_dns_addr,
+  Optional[String]     $parent_domain_name,
+  String               $ad_creation_retry_attempts,
+  String               $ad_creation_retry_interval,
+  Stdlib::AbsolutePath $ad_db_path,
+  Stdlib::AbsolutePath $ad_log_path,
+  Stdlib::AbsolutePath $sysvol_path,
 ) {
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {
@@ -72,7 +74,7 @@ class active_directory::domain_controller (
       dsc_name   => 'dns',
     }
 
-    dsc_xdnsserveraddress { 'dnsserveraddress':
+    dsc_dnsserveraddress { 'dnsserveraddress':
       dsc_address        => $dns_array,
       dsc_interfacealias => 'ethernet',
       dsc_addressfamily  => 'ipv4',

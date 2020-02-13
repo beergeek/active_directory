@@ -4,8 +4,10 @@
 #
 # @param domain_credential_user The username for a user that has/will have domain administrator rights.
 # @param domain_credential_passwd The password for the user that has/will have domain admininstrator rights.
-# @param replicationscope Scope of replication for zone. Can be "Custom", "custom", "Domain", "domain", "Forest", "forest", "Legacy", or "legacy"
-# @param dynamicupdate Determine how updates are performed. Can be "None", "none", "NonsecureAndSecure", "nonsecureandsecure", "Secure", or "secure"
+# @param replicationscope Scope of replication for zone. Can be "Custom", "custom", "Domain", "domain", "Forest", 
+#   "forest", "Legacy", or "legacy"
+# @param dynamicupdate Determine how updates are performed. Can be "None", "none", "NonsecureAndSecure", 
+#   "nonsecureandsecure", "Secure", or "secure"
 # @param directorypartitionname Name of directory partition. 
 #
 # @example
@@ -17,11 +19,12 @@
 #   }
 #
 define active_directory::dns_ad_zone (
-  String $domain_credential_user,
-  String $domain_credential_passwd,
-  Active_directory::Replicationscope $replicationscope  = 'Forest',
-  Active_directory::Dynamicupdate $dynamicupdate        = 'Secure',
-  Optional[String] $directorypartitionname              = undef,
+  String                             $domain_credential_user,
+  String                             $domain_credential_passwd,
+
+  Active_directory::Replicationscope $replicationscope          = lookup('active_directory::dns_ad_zone::replicationscope'),
+  Active_directory::Dynamicupdate    $dynamicupdate             = lookup('active_directory::dns_ad_zone::dynamicupdate'),
+  Optional[String]                   $directorypartitionname    = lookup('active_directory::dns_ad_zone::directorypartitionname'),
 ) {
 
   if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {
