@@ -1,0 +1,57 @@
+---
+
+active_directory::domain_controller::ad_users:                     {}
+active_directory::domain_controller::parent_dns_addr:              ~
+active_directory::domain_controller::parent_domain_name:           ~
+active_directory::domain_controller::ad_creation_retry_attempts:   '5'
+active_directory::domain_controller::ad_creation_retry_interval:   '5'
+active_directory::domain_controller::ad_db_path:                   'C:\Windows\NTDS'
+active_directory::domain_controller::ad_log_path:                  'C:\Windows\NTDS'
+active_directory::domain_controller::sysvol_path:                  'C:\Windows\SYSVOL'
+  
+active_directory::dns_ad_zone::replicationscope:                   'Forest'
+active_directory::dns_ad_zone::dynamicupdate:                      'Secure'
+active_directory::dns_ad_zone::directorypartitionname:             ~
+  
+active_directory::dns_server::addressanswerlimit:                  '0'
+active_directory::dns_server::bootmethod:                          '3'
+active_directory::dns_server::eventloglevel:                       '4'
+active_directory::dns_server::allowupdate:                         '1'
+active_directory::dns_server::enablednssec:                        '1'
+active_directory::dns_server::enableednsprobes:                    '1'
+active_directory::dns_server::forwarddelegations:                  '0'
+active_directory::dns_server::roundrobin:                          '1'
+active_directory::dns_server::autocacheupdate:                     false
+active_directory::dns_server::bindsecondaries:                     false
+active_directory::dns_server::enabledirectorypartitions:           true
+active_directory::dns_server::localnetpriority:                    true
+active_directory::dns_server::loosewildcarding:                    false
+active_directory::dns_server::norecursion:                         false
+active_directory::dns_server::secureresponses:                     false
+active_directory::dns_server::strictfileparsing:                   false
+active_directory::dns_server::writeauthorityns:                    false
+active_directory::dns_server::autoconfigfilezones:                 1
+active_directory::dns_server::forwardingtimeout:                   3
+active_directory::dns_server::logfilemaxsize:                      500000000
+active_directory::dns_server::maxcachettl:                         86400
+active_directory::dns_server::maxnegativecachettl:                 900
+active_directory::dns_server::namecheckflag:                       2
+active_directory::dns_server::recursionretry:                      3
+active_directory::dns_server::recursiontimeout:                    8
+active_directory::dns_server::rpcprotocol:                         5
+active_directory::dns_server::scavenginginterval:                  1
+active_directory::dns_server::sendport:                            0
+active_directory::dns_server::updateoptions:                       783
+active_directory::dns_server::xfrconnecttimeout:                   30
+active_directory::dns_server::forwarders:                          undef
+active_directory::dns_server::logipfilterlist:                     undef
+active_directory::dns_server::listening_addresses:                 "%facts.networking.ip"
+active_directory::dns_server::logfilepath:                         '%SystemRoot%\System32\DNS\Dns.log'
+
+active_directory::child_domain_controller::ad_db_path:             'C:\Windows\NTDS'
+active_directory::child_domain_controller::ad_log_path:            'C:\Windows\NTDS'
+active_directory::child_domain_controller::sysvol_path:            'C:\Windows\SYSVOL'
+active_directory::child_domain_controller::ad_wait_retry_attempts: '5'
+active_directory::child_domain_controller::ad_wait_retry_interval: '5'
+active_directory::child_domain_controller::site_name:              ~
+active_directory::child_domain_controller::install_media_path:     ~
