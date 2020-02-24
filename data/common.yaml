@@ -43,8 +43,8 @@ active_directory::dns_server::scavenginginterval:                  1
 active_directory::dns_server::sendport:                            0
 active_directory::dns_server::updateoptions:                       783
 active_directory::dns_server::xfrconnecttimeout:                   30
-active_directory::dns_server::forwarders:                          undef
-active_directory::dns_server::logipfilterlist:                     undef
+active_directory::dns_server::forwarders:                          ~
+active_directory::dns_server::logipfilterlist:                     ~
 active_directory::dns_server::listening_addresses:                 "%facts.networking.ip"
 active_directory::dns_server::logfilepath:                         '%SystemRoot%\System32\DNS\Dns.log'
 
