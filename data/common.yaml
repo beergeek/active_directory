@@ -45,7 +45,7 @@ active_directory::dns_server::updateoptions:                       783
 active_directory::dns_server::xfrconnecttimeout:                   30
 active_directory::dns_server::forwarders:                          ~
 active_directory::dns_server::logipfilterlist:                     ~
-active_directory::dns_server::listening_addresses:                 "%facts.networking.ip"
+active_directory::dns_server::listening_addresses:                 "%{facts.networking.ip}"
 active_directory::dns_server::logfilepath:                         '%SystemRoot%\System32\DNS\Dns.log'
 
 active_directory::child_domain_controller::ad_db_path:             'C:\Windows\NTDS'
