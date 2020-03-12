@@ -29,10 +29,10 @@
 # }
 #
 class active_directory::domain_controller (
-  Sensitive[String[1]] $domain_credential_passwd,
-  String               $domain_credential_user,
-  String               $domain_name,
-  Sensitive[String[1]] $safe_mode_passwd,
+  String[1] $domain_credential_passwd,
+  String[1] $domain_credential_user,
+  String[1] $domain_name,
+  String[1] $safe_mode_passwd,
 
   # Uses hiera for defaults
   Optional[Hash]       $ad_users,
@@ -53,12 +53,12 @@ class active_directory::domain_controller (
 
   $_domain_credentials = {
     'user'     => $domain_credential_user,
-    'password' => $domain_credential_passwd,
+    'password' => Sensitive($domain_credential_passwd),
   }
 
   $_safemode_credentials = {
     'user'     => 'Administrator',
-    'password' => $safe_mode_passwd,
+    'password' => Sensitive($safe_mode_passwd),
   }
 
   if $parent_domain_name {
