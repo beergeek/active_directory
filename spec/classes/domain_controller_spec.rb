@@ -9,8 +9,8 @@ describe 'active_directory::domain_controller' do
     let :params do
       {
         domain_credential_user:    'Admininstrator',
-        domain_credential_passwd:  RSpec::Puppet::RawString.new("Sensitive('vftybeisudvfkyj rtysaerfvacjtyDMZHfvfgty')"),
-        safe_mode_passwd:          RSpec::Puppet::RawString.new("Sensitive('EvenW0rse%')"),
+        domain_credential_passwd:  'vftybeisudvfkyj rtysaerfvacjtyDMZHfvfgty',
+        safe_mode_passwd:          'EvenW0rse%',
         domain_name:               'puppet.local',
       }
     end

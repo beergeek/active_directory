@@ -27,7 +27,7 @@
 class active_directory::child_domain_controller (
   String[1]                      $domain_name,
   String[1]                      $domain_credential_user,
-  Sensitive[String[1]]           $domain_credential_passwd,
+  String[1]                      $domain_credential_passwd,
 
   # Use hiera for defaults
   Stdlib::AbsolutePath           $ad_db_path,
@@ -47,7 +47,7 @@ class active_directory::child_domain_controller (
 
   $_domain_credentials = {
     'user'     => $domain_credential_user,
-    'password' => $domain_credential_passwd,
+    'password' => Sensitive($domain_credential_passwd),
   }
 
   dsc_xwaitforaddomain { $domain_name:
