@@ -21,10 +21,10 @@
 # @param eventloglevel Determines which DNS events go to the Event Viewr. '0' None, '1' Errors only, '2' Errors and warnings, '4' All 
 #   events.
 # @param forwarddelegations Specifies whether queries to delegated sub-zones are forwarded
-# @param forwarders A comma separated string of fowarder addresses.
+# @param forwarders List of IP addresses used as forwarders
 # @param forwardingtimeout Time, in seconds, a DNS Server forwarding a query will wait for resolution from the forwarder before attempting 
 #   to resolve the query itself.
-# @param listening_addresses A comma separated string of listening addresses.
+# @param listening_addresses list of IP addresses to listen on
 # @param localnetpriority Determines the order in which the DNS server returns A records when it has multiple A records for the same name.
 # @param logfilemaxsize Size of the DNS Server debug log, in bytes.
 # @param logfilepath File name and path for the DNS Server debug log.
@@ -88,9 +88,9 @@ class active_directory::dns_server (
   Integer                                 $sendport,
   Integer                                 $updateoptions,
   Integer                                 $xfrconnecttimeout,
-  Optional[String]                        $forwarders,
+  Optional[Variant[Array[String],String]] $forwarders,
   Optional[Variant[Array[String],String]] $logipfilterlist,
-  String                                  $listening_addresses,
+  Variant[Array[String],String]           $listening_addresses,
   String                                  $logfilepath,
 ) {
 
