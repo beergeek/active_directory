@@ -193,9 +193,9 @@ Default value: '0'
 
 ##### `forwarders`
 
-Data type: `Optional[String]`
+Data type: `Optional[Variant[Array[String],String]]`
 
-A comma separated string of fowarder addresses.
+A list of of fowarder addresses or a single forwarder address
 
 Default value: `undef`
 
@@ -209,9 +209,9 @@ Default value: 3
 
 ##### `listening_addresses`
 
-Data type: `String`
+Data type: `Variant[Array[String],String]`
 
-A comma separated string of listening addresses.
+A list of listening addresses or a single listen address
 
 Default value: $facts['networking']['ip']
 
