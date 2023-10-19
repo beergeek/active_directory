@@ -70,7 +70,7 @@ This will use default settings for the DNS server. There are plenty of options f
 ## Reference
 
 ## Classes
-* [`active_directory::dns_server`](#active_directorydns_server): A class to manage DNS servers on Windows 2012 R2 and 2016
+* [`active_directory::dns_server`](#active_directorydns_server): A class to manage DNS servers on Windows 2012 R2, 2016, 2019, and 2022
 * [`active_directory::domain_controller`](#active_directorydomain_controller): This class manages Forest and child domain controllers. It can also manage AD users.
 * [`active_directory::rsat_ad`](#active_directoryrsat_ad): A class to manage the Remote Server Administration Tools
 * [`active_directory::rsat_dns`](#active_directoryrsat_dns): A class to manage the Remote Server Administration Tools
@@ -82,7 +82,7 @@ This will use default settings for the DNS server. There are plenty of options f
 
 active_directory::dns_server
 
-A class to manage DNS servers on Windows 2012 R2 and 2016
+A class to manage DNS servers on Windows 2012 R2, 2016, 2019, and 2022
 
 #### Examples
 #####

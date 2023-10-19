@@ -1,8 +1,8 @@
 # active_directory::dns_server
 #
-# A class to manage DNS servers on Windows 2012 R2 and 2016
+# A class to manage DNS servers on Windows 2012 R2, 2016, 2019, and 2022
 #
-# @summary A class to manage DNS servers on Windows 2012 R2 and 2016
+# @summary A class to manage DNS servers on Windows 2012 R2, 2016, 2019, and 2022
 #
 # @param dns_server_name DNS Server name.
 # @param addressanswerlimit Number of addresses the server will return, 0 is unlimited or a  range is 5 to 28.
@@ -94,8 +94,8 @@ class active_directory::dns_server (
   String                                  $logfilepath,
 ) {
 
-  if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {
-    fail("This class is for Windows 2012 R2, 2016 and 2019, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
+  if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019|2022/) {
+    fail("This class is for Windows 2012 R2, 2016, 2019 and 2022, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
   }
 
   require active_directory::rsat_dns

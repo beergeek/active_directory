@@ -45,8 +45,8 @@ class active_directory::domain_controller (
   Stdlib::AbsolutePath $sysvol_path,
 ) {
 
-  if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019/) {
-    fail("This class is for Windows 2012 R2, 2016 and 2019, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
+  if !($facts['os']['family'] == 'windows' and $facts['os']['release']['major'] =~ /2012 R2|2016|2019|2022/) {
+    fail("This class is for Windows 2012 R2, 2016, 2019 and 2022, not ${facts['os']['family']} and ${facts['os']['release']['major']}")
   }
 
   require active_directory::rsat_ad
